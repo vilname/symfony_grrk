@@ -14,8 +14,6 @@ use App\Core\GildedRose\Lib\Legendary;
  */
 class LegendaryFactory implements FactoryProduct
 {
-    protected static string $factory = 'legendary';
-
     public function getProduct(): Product
     {
         return new Legendary();

@@ -37,6 +37,11 @@ class Items
      */
     private $codeType;
 
+    /**
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private $createdAt;
+
     public function getId(): int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Items
     public function setCodeType(string $codeType): self
     {
         $this->codeType = $codeType;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

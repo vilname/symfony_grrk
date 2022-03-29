@@ -39,7 +39,7 @@ class ChangeQualityProductCommand extends Command
 
         foreach($items as $item) {
             /** @var Product $product */
-            $product = ProducerFactory::getFactory($item->getSellIn())->getProduct();
+            $product = ProducerFactory::getFactory($item->getCodeType())->getProduct();
             $itemProduct = $product->updateQuality($item);
 
             if (!$itemProduct) {

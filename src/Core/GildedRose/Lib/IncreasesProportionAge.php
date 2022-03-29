@@ -8,27 +8,24 @@ use App\Entity\Items;
 
 class IncreasesProportionAge implements Product
 {
-    private int $changeQuality = 2;
-    private int $changeSellIn = 1;
-
     /**
      * @param Items $items
      * @return Items|null
      */
     public function updateQuality(Items $items): ?Items
     {
-        if (!$items->getQuality()) {
+        $interval = $items->getCreatedAt()->diff(new \DateTime('2022-03-28'));
+
+        if ($items->getQuality() == 50) {
             return null;
         }
 
-        if (!$items->getSellIn()) {
-            $this->changeQuality *= 2;
-            $this->changeSellIn = 0;
+        if ($items->getQuality() + $interval->days > 50) {
+            $items->setQuality(50);
+            return $items;
         }
 
-        $items->setSellIn($items->getSellIn() - $this->changeSellIn);
-        $items->setQuality($items->getQuality() - $this->changeQuality);
-
+        $items->setQuality($items->getQuality() + $interval->days);
         return $items;
     }
 }
