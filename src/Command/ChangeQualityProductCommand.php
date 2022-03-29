@@ -2,6 +2,8 @@
 
 namespace App\Command;
 
+use App\Core\GildedRose\Factory\ProducerFactory;
+use App\Core\GildedRose\Interfaces\Product;
 use App\Service\ItemsService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -31,8 +33,20 @@ class ChangeQualityProductCommand extends Command
 //
 //        $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
 
-        foreach($this->itemsService->findAll() as $item) {
+        $items = $this->itemsService->findAll();
 
+//        dd($items);
+
+        foreach($items as $item) {
+            /** @var Product $product */
+            $product = ProducerFactory::getFactory($item->getSellIn())->getProduct();
+            $itemProduct = $product->updateQuality($item);
+
+            if (!$itemProduct) {
+                continue;
+            }
+
+            $this->itemsService->save($itemProduct);
         }
 
         return Command::SUCCESS;

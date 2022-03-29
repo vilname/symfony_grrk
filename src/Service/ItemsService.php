@@ -7,8 +7,7 @@ use App\Entity\Items;
 
 class ItemsService
 {
-    /** @var EntityManagerInterface */
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
@@ -22,5 +21,11 @@ class ItemsService
     {
         $itemsRepository = $this->entityManager->getRepository(Items::class);
         return $itemsRepository->findAll();
+    }
+
+    public function save(Items $items)
+    {
+        $this->entityManager->persist($items);
+        $this->entityManager->flush();
     }
 }
