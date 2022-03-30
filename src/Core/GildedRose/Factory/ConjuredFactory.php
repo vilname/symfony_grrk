@@ -14,8 +14,6 @@ use App\Core\GildedRose\Lib\Conjured;
  */
 class ConjuredFactory implements FactoryProduct
 {
-    protected static string $factory = 'conjured';
-
     public function getProduct(): Product
     {
         return new Conjured();

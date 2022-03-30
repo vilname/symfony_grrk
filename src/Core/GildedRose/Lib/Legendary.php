@@ -7,8 +7,9 @@ use App\Entity\Items;
 
 class Legendary implements Product
 {
+    // качество товара ни когда не изменяется
     public function updateQuality(Items $items): ?Items
     {
-        return $items;
+        return null;
     }
 }

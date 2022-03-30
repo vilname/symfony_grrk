@@ -14,8 +14,6 @@ use App\Core\GildedRose\Lib\Usual;
  */
 class UsualFactory implements FactoryProduct
 {
-    protected static string $factory = 'usual';
-
     public function getProduct(): Product
     {
         return new Usual();

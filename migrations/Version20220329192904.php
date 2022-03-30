@@ -21,7 +21,7 @@ final class Version20220329192904 extends AbstractMigration
     {
         $this->addSql("INSERT INTO items (\"name\", \"sell_in\", \"quality\", \"code_type\", \"created_at\") VALUES
                                                   ('Aged Brie', 10,3, 'increases_proportion_age', now()),
-                                                  ('Sulfuras', null, null, 'legendary', now()),
+                                                  ('Sulfuras', null, 80, 'legendary', now()),
                                                   ('Backstage passes', 40, 8, 'increases_proportion_age', now()),
                                                   ('Сотворенный товар 1', 30, 7, 'conjured', now()),
                                                   ('Сотворенный товар 2', 32, 9, 'conjured', now()),

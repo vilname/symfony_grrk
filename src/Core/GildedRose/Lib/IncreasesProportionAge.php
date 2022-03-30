@@ -14,7 +14,7 @@ class IncreasesProportionAge implements Product
      */
     public function updateQuality(Items $items): ?Items
     {
-        $interval = $items->getCreatedAt()->diff(new \DateTime('2022-03-28'));
+        $interval = $items->getCreatedAt()->diff(new \DateTime());
 
         if ($items->getQuality() == 50) {
             return null;
@@ -26,6 +26,7 @@ class IncreasesProportionAge implements Product
         }
 
         $items->setQuality($items->getQuality() + $interval->days);
+
         return $items;
     }
 }

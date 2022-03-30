@@ -16,6 +16,8 @@ class ProducerFactory implements Producer
                 return new IncreasesProportionAgeFactory();
             case 'legendary':
                 return new LegendaryFactory();
+            case 'backstage_passes':
+                return new BackstagePassesFactory();
             default:
                 return new UsualFactory();
         }

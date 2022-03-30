@@ -14,8 +14,6 @@ use App\Core\GildedRose\Lib\IncreasesProportionAge;
  */
 class IncreasesProportionAgeFactory implements FactoryProduct
 {
-    protected static string $factory = 'increases_proportion_age';
-
     public function getProduct(): Product
     {
         return new IncreasesProportionAge();
